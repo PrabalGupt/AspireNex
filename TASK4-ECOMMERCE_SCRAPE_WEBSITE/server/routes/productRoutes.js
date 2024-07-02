@@ -1,6 +1,8 @@
 // server/routes/productRoutes.js
 const express = require('express');
 const router = express.Router();
+const connectToDB = require('../utils/mongoose');
+
 const {
   scrapeAndStoreProduct,
   getProductById,
