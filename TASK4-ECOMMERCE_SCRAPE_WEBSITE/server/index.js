@@ -14,11 +14,12 @@ app.use(cors({
   credentials: true
 }));
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://aspire-nex-frontend.vercel.app');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Origin', '*');
   next();
 });
+// https://aspire-nex-frontend.vercel.app
+// res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+// res.header('Access-Control-Allow-Headers', 'Content-Type');
 
 app.use(express.json()); // Parse incoming request bodies in JSON format
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
