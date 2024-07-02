@@ -1,14 +1,6 @@
 // server/routes/productRoutes.js
 const express = require('express');
 const router = express.Router();
-const cors = require('cors');
-
-app.use(cors({
-  origin: ["https://aspire-nex-frontend.vercel.app"],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
-
 const {
   scrapeAndStoreProduct,
   getProductById,
