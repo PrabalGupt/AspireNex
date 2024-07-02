@@ -12,10 +12,10 @@ const {
 // Route: GET all products
 router.get('/', async (req, res) => {
   try {
-    res.send("received fetched")
-    // const products = await getAllProducts();
-    // res.status(200).json(products);
-    res.status(200);
+    console.log('hii');
+    const products = await getAllProducts();
+    console.log(products);
+    res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ message: `Error fetching products: ${error.message}` });
   }
