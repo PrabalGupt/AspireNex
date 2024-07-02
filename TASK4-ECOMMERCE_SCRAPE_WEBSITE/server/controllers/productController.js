@@ -63,10 +63,7 @@ const getProductById = async (productId) => {
 
 const getAllProducts = async () => {
   try {
-    connectToDB();
-
     const products = await Product.find();
-
     return products;
   } catch (error) {
     console.log("Error in fetching products", error);
