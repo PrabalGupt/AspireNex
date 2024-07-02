@@ -1,0 +1,40 @@
+/* Price Info Card */
+.price-info_card {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 3px solid #d1d5db;
+  background-color: #f4f4f4; /* bg-white-100 */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.text-base {
+  font-size: 1rem;
+}
+
+.text-black-100 {
+  color: #1f2937; /* Assuming black-100 corresponds to this */
+}
+
+.flex {
+  display: flex;
+}
+
+.gap-1 {
+  gap: 4px; /* 1rem = 16px, so 0.25rem = 4px */
+}
+
+.text-2xl {
+  font-size: 1.5rem; /* 2xl in Tailwind is 1.5rem */
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-secondary {
+  color: #1d4ed8; /* text-secondary */
+}

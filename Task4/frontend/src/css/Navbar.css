@@ -1,0 +1,41 @@
+/* navbar.css */
+
+.navbar-header {
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navbar-logo-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.navbar-logo-highlight {
+  color: #1d4ed8; /* Adjust this color to match the 'text-primary' class in Tailwind CSS */
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navbar-icon {
+  object-fit: contain;
+  width: 28px;
+  height: 28px;
+}

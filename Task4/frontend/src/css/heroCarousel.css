@@ -1,0 +1,22 @@
+.hero-carousel {
+    position: relative;
+  }
+  
+  .hero-carousel .carousel .slide img {
+    object-fit: contain;
+  }
+  
+  .arrow-icon {
+    position: absolute;
+    left: -15%;
+    bottom: 0;
+    z-index: 0;
+    display: none;
+  }
+  
+  @media (min-width: 1200px) {
+    .arrow-icon {
+      display: block;
+    }
+  }
+  
