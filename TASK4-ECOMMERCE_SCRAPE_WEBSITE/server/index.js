@@ -28,8 +28,8 @@ app.use(json()); // Parse incoming request bodies in JSON format
 app.use(urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // Define routes
-import productRoutes from './routes/productRoutes';
-import cronRoutes from './routes/cronRoutes';
+import productRoutes from './routes/productRoutes.js';
+import cronRoutes from './routes/cronRoutes.js';
 
 // Use routes
 app.use('/api/products', productRoutes);

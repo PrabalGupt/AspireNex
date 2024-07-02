@@ -1,8 +1,8 @@
 const { getLowestPrice, getHighestPrice, getAveragePrice, getEmailNotifType } = require ("../utils");
-const { connectToDB } = require ("../mongoose");
+const { connectToDB } = require ("../mongoose.js");
 const Product = require ("../models/product.model");
-const { scrapeAmazonProduct } = require ("../scraper");
-const { generateEmailBody, sendEmail } = require ("./index"); // Adjust the path if needed
+const { scrapeAmazonProduct } = require ("../scraper.js");
+const { generateEmailBody, sendEmail } = require ("./index.js"); // Adjust the path if needed
 
 // Define constants for cron job configuration
 export const maxDuration = 300; // Maximum duration for each execution

@@ -1,8 +1,8 @@
 // server/controllers/productController.js
-const Product = require('../models/productModel');
-const connectToDB = require('../utils/mongoose').default;
-const {scrapeAmazonProduct} = require('../utils/scraper');
-const { getAveragePrice, getHighestPrice, getLowestPrice } = require('../utils/utils');
+const Product = require('../models/productModel.js');
+const connectToDB = require('../utils/mongoose.js').default;
+const {scrapeAmazonProduct} = require('../utils/scraper.js');
+const { getAveragePrice, getHighestPrice, getLowestPrice } = require('../utils/utils.js');
 const { generateEmailBody, sendEmail } = require('../utils/nodemailer');
 
 const scrapeAndStoreProduct = async (productUrl) => {

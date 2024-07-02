@@ -1,5 +1,5 @@
-const { EmailContent, EmailProductInfo, NotificationType } = require('../../utils/types');
-const nodemailer = require('nodemailer');
+import { EmailContent, EmailProductInfo, NotificationType } from ('../../utils/types.js');
+import nodemailer from ('nodemailer');
 require('dotenv').config();
 
 const Notification = {

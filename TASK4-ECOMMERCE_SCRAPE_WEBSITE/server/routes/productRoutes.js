@@ -1,9 +1,7 @@
 // server/routes/productRoutes.js
 import { Router } from 'express';
 const router = Router();
-import connectToDB from '../utils/mongoose';
-
-import { scrapeAndStoreProduct, getProductById, getAllProducts, getSimilarProducts, addUserEmailToProduct } from '../controllers/productController';
+import { scrapeAndStoreProduct, getProductById, getAllProducts, getSimilarProducts, addUserEmailToProduct } from '../controllers/productController.js';
 
 // Route: GET all products
 router.get('/', async (req, res) => {

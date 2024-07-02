@@ -1,11 +1,11 @@
 // server/routes/cronRoutes.js
 import { Router } from 'express';
 const router = Router();
-import { getLowestPrice, getHighestPrice, getAveragePrice, getEmailNotifType } from '../utils/utils';
-import connectToDB from '../utils/mongoose';
-import { find, findOneAndUpdate } from '../models/productModel';
-import scrapeAmazonProduct from '../utils/scraper';
-import { generateEmailBody, sendEmail } from '../utils/nodemailer';
+import { getLowestPrice, getHighestPrice, getAveragePrice, getEmailNotifType } from '../utils/utils.js';
+import connectToDB from '../utils/mongoose.js';
+import { find, findOneAndUpdate } from '../models/productModel.js';
+import scrapeAmazonProduct from '../utils/scraper.js';
+import { generateEmailBody, sendEmail } from '../utils/nodemailer.js';
 
 router.get('/cron', async (req, res) => {
   try {
