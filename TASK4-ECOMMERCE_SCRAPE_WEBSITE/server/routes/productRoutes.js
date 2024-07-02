@@ -8,7 +8,6 @@ import { scrapeAndStoreProduct, getProductById, getAllProducts, getSimilarProduc
 // Route: GET all products
 router.get('/', async (req, res) => {
   try {
-    connectToDB();
     const products = await getAllProducts();
     console.log(products);
     res.status(200).json(products);

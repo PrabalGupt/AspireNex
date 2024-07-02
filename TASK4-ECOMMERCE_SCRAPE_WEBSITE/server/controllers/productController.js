@@ -1,9 +1,9 @@
 // server/controllers/productController.js
-import { findOne, findOneAndUpdate, find, findById } from '../models/productModel';
-import connectToDB from '../utils/mongoose';
-import { scrapeAmazonProduct } from '../utils/scraper';
-import { getAveragePrice, getHighestPrice, getLowestPrice } from '../utils/utils';
-import { generateEmailBody, sendEmail } from '../utils/nodemailer';
+const Product = require('../models/productModel');
+const connectToDB = require('../utils/mongoose').default;
+const {scrapeAmazonProduct} = require('../utils/scraper');
+const { getAveragePrice, getHighestPrice, getLowestPrice } = require('../utils/utils');
+const { generateEmailBody, sendEmail } = require('../utils/nodemailer');
 
 const scrapeAndStoreProduct = async (productUrl) => {
   if (!productUrl) return;
@@ -17,7 +17,7 @@ const scrapeAndStoreProduct = async (productUrl) => {
 
     let product = scrapedProduct;
 
-    const existingProduct = await findOne({ url: scrapedProduct.url });
+    const existingProduct = await Product.findOne({ url: scrapedProduct.url });
 
     if (existingProduct) {
       const updatedPriceHistory = [
@@ -34,7 +34,7 @@ const scrapeAndStoreProduct = async (productUrl) => {
       };
     }
 
-    const newProduct = await findOneAndUpdate(
+    const newProduct = await Product.findOneAndUpdate(
       { url: scrapedProduct.url },
       product,
       { upsert: true, new: true }
@@ -51,7 +51,7 @@ const getProductById = async (productId) => {
   try {
     connectToDB();
 
-    const product = await findOne({ _id: productId });
+    const product = await Product.findOne({ _id: productId });
 
     if (!product) return null;
 
@@ -62,9 +62,9 @@ const getProductById = async (productId) => {
 };
 
 const getAllProducts = async () => {
-  connectToDB();
+  await connectToDB();
   try {
-    const products = await find();
+    const products = await Product.find();
     return products;
   } catch (error) {
     console.log("Error in fetching products", error);
@@ -75,11 +75,11 @@ const getSimilarProducts = async (productId) => {
   try {
     connectToDB();
 
-    const currentProduct = await findById(productId);
+    const currentProduct = await Product.findById(productId);
 
     if (!currentProduct) return null;
 
-    const similarProducts = await find({
+    const similarProducts = await Product.find({
       _id: { $ne: productId },
     }).limit(3);
 
@@ -91,7 +91,7 @@ const getSimilarProducts = async (productId) => {
 
 const addUserEmailToProduct = async (productId, userEmail) => {
   try {
-    const product = await findById(productId);
+    const product = await Product.findById(productId);
     console.log(product);
     if (!product) return;
 
@@ -112,7 +112,7 @@ const addUserEmailToProduct = async (productId, userEmail) => {
   }
 };
 
-export default {
+module.exports = {
   scrapeAndStoreProduct,
   getProductById,
   getAllProducts,
