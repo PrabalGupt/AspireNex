@@ -9,7 +9,13 @@
 
   // Middleware
   app.use(bodyParser.json()); // Parse incoming request bodies in JSON format
-  app.use(cors()); // Enable CORS for all requests
+  app.use(cors(
+    {
+      origin: ["https://aspire-nex-frontend.vercel.app"],
+      methods: ["POST", "GET"],
+      credentials: true
+    }
+  )); // Enable CORS for all requests
 
   // Define routes
   const productRoutes = require('./routes/productRoutes');
