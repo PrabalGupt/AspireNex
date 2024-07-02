@@ -1,11 +1,11 @@
 // server/controllers/productController.js
-const Product = require('../models/productModel.js');
-const connectToDB = require('../utils/mongoose.js').default;
-const {scrapeAmazonProduct} = require('../utils/scraper.js');
-const { getAveragePrice, getHighestPrice, getLowestPrice } = require('../utils/utils.js');
-const { generateEmailBody, sendEmail } = require('../utils/nodemailer');
+import Product from '../models/productModel.js';
+import connectToDB from '../utils/mongoose.js';
+import { scrapeAmazonProduct } from '../utils/scraper.js';
+import { getAveragePrice, getHighestPrice, getLowestPrice } from '../utils/utils.js';
+import { generateEmailBody, sendEmail } from '../utils/nodemailer/index.js';
 
-const scrapeAndStoreProduct = async (productUrl) => {
+export const scrapeAndStoreProduct = async (productUrl) => {
   if (!productUrl) return;
 
   try {
@@ -47,7 +47,7 @@ const scrapeAndStoreProduct = async (productUrl) => {
   }
 };
 
-const getProductById = async (productId) => {
+export const getProductById = async (productId) => {
   try {
     connectToDB();
 
@@ -61,7 +61,7 @@ const getProductById = async (productId) => {
   }
 };
 
-const getAllProducts = async () => {
+export const getAllProducts = async () => {
   await connectToDB();
   try {
     const products = await Product.find();
@@ -71,7 +71,7 @@ const getAllProducts = async () => {
   }
 };
 
-const getSimilarProducts = async (productId) => {
+export const getSimilarProducts = async (productId) => {
   try {
     connectToDB();
 
@@ -89,7 +89,7 @@ const getSimilarProducts = async (productId) => {
   }
 };
 
-const addUserEmailToProduct = async (productId, userEmail) => {
+export const addUserEmailToProduct = async (productId, userEmail) => {
   try {
     const product = await Product.findById(productId);
     console.log(product);
@@ -110,12 +110,4 @@ const addUserEmailToProduct = async (productId, userEmail) => {
   } catch (error) {
     console.log(error);
   }
-};
-
-module.exports = {
-  scrapeAndStoreProduct,
-  getProductById,
-  getAllProducts,
-  getSimilarProducts,
-  addUserEmailToProduct,
 };

@@ -10,7 +10,7 @@ const Notification = {
   const THRESHOLD_PERCENTAGE = 40;
   
   // Extracts and returns the price from a list of possible elements.
-  function extractPrice(...elements) {
+  export function extractPrice(...elements) {
     for (const element of elements) {
       const priceText = element.text().trim();
   
@@ -31,13 +31,13 @@ const Notification = {
   }
   
   // Extracts and returns the currency symbol from an element.
-  function extractCurrency(element) {
+  export function extractCurrency(element) {
     const currencyText = element.text().trim().slice(0, 1);
     return currencyText ? currencyText : "";
   }
   
   // Extracts description from two possible elements from amazon
-  function extractDescription($) {
+  export function extractDescription($) {
     // these are possible elements holding description of the product
     const selectors = [
       ".a-unordered-list .a-list-item",
@@ -60,7 +60,7 @@ const Notification = {
     return "";
   }
   
-  function getHighestPrice(priceList) {
+  export function getHighestPrice(priceList) {
     let highestPrice = priceList[0];
   
     for (let i = 0; i < priceList.length; i++) {
@@ -72,7 +72,7 @@ const Notification = {
     return highestPrice.price;
   }
   
-  function getLowestPrice(priceList) {
+  export function getLowestPrice(priceList) {
     let lowestPrice = priceList[0];
   
     for (let i = 0; i < priceList.length; i++) {
@@ -84,14 +84,14 @@ const Notification = {
     return lowestPrice.price;
   }
   
-  function getAveragePrice(priceList) {
+  export function getAveragePrice(priceList) {
     const sumOfPrices = priceList.reduce((acc, curr) => acc + curr.price, 0);
     const averagePrice = sumOfPrices / priceList.length || 0;
   
     return averagePrice;
   }
   
-  function getEmailNotifType(scrapedProduct, currentProduct) {
+  export function getEmailNotifType(scrapedProduct, currentProduct) {
     const lowestPrice = getLowestPrice(currentProduct.priceHistory);
   
     if (scrapedProduct.currentPrice < lowestPrice) {
@@ -107,21 +107,9 @@ const Notification = {
     return null;
   }
   
-  function formatNumber(num = 0) {
+  export function formatNumber(num = 0) {
     return num.toLocaleString(undefined, {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     });
   }
-  
-  module.exports = {
-    extractPrice,
-    extractCurrency,
-    extractDescription,
-    getHighestPrice,
-    getLowestPrice,
-    getAveragePrice,
-    getEmailNotifType,
-    formatNumber
-  };
-  

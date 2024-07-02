@@ -1,8 +1,8 @@
 // server/routes/productRoutes.js
 import { Router } from 'express';
-const router = Router();
 import { scrapeAndStoreProduct, getProductById, getAllProducts, getSimilarProducts, addUserEmailToProduct } from '../controllers/productController.js';
 
+const router = Router();
 // Route: GET all products
 router.get('/', async (req, res) => {
   try {

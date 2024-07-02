@@ -1,4 +1,4 @@
-import { EmailContent, EmailProductInfo, NotificationType } from ('../../utils/types.js');
+// import { EmailContent, EmailProductInfo, NotificationType } from ('../../utils/types.js');
 import nodemailer from ('nodemailer');
 require('dotenv').config();
 
@@ -17,7 +17,7 @@ const Notification = {
  * @param {string} type - Notification type.
  * @returns {Object} Email subject and body.
  */
-async function generateEmailBody(product, type) {
+export async function generateEmailBody(product, type) {
   const THRESHOLD_PERCENTAGE = 40;
   const shortenedTitle =
     product.title.length > 20
@@ -104,7 +104,7 @@ const transporter = nodemailer.createTransport({
  * @param {string[]} sendTo - Array of email addresses to send the email to.
  * @returns {Promise<void>} A promise that resolves when the email is sent successfully.
  */
-const sendEmail = async (emailContent, sendTo) => {
+export const sendEmail = async (emailContent, sendTo) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: sendTo.join(', '),
@@ -119,9 +119,4 @@ const sendEmail = async (emailContent, sendTo) => {
     console.error('Error sending email:', error);
     throw new Error('Failed to send email');
   }
-};
-
-module.exports = {
-  generateEmailBody,
-  sendEmail
 };

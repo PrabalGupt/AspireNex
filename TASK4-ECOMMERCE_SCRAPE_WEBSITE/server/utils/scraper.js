@@ -1,6 +1,6 @@
-const axios = require('axios')
+import axios from ('axios')
 import { load } from 'cheerio';
-import { extractCurrency, extractDescription, extractPrice } from './utils';
+import { extractCurrency, extractDescription, extractPrice } from './utils.js';
 
 async function scrapeAmazonProduct(url) {
   if (!url) return;
