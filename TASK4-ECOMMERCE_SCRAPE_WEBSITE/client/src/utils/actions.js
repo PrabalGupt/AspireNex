@@ -2,7 +2,7 @@
 
 export const addUserEmailToProduct = async (productId, userEmail) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/products/${productId}/add-user-email`, {
+      const response = await fetch(`https://ecommerce-website-wine-psi.vercel.app/api/products/${productId}/add-user-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
