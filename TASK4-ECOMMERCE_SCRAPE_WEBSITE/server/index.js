@@ -32,6 +32,14 @@ const cronRoutes = require('./routes/cronRoutes');
 app.use('/api/products', productRoutes);
 app.use('/api/cron', cronRoutes);
 
+app.get('/', async (req, res) => {
+  try {
+    res.send("Connected")
+    console.log("connected")
+  } catch (error) {
+    res.status(500).json({ message: `Error fetching products: ${error.message}` });
+  }
+})
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

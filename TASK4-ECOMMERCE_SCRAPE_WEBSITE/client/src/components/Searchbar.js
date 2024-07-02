@@ -35,7 +35,7 @@ const Searchbar = () => {
       setIsLoading(true);
       console.log(searchPrompt)
       // Make a POST request to your backend API endpoint
-      const response = await axios.post('https://commerce-website-wine-psi.vercel.app/api/products/scrape', { productUrl: searchPrompt });
+      const response = await axios.post('https://ecommerce-website-wine-psi.vercel.app/api/products/scrape', { productUrl: searchPrompt });
       console.log('Scraped Product:', response.data);
 
       // Optionally, update your UI with the scraped product data
