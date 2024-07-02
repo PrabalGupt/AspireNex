@@ -1,13 +1,13 @@
 
 // server/utils/mongoose.js
-const mongoose = require('mongoose');
-const dotenv = require('dotenv')
+import { set, connect } from 'mongoose';
+import { config } from 'dotenv';
 let isConnected = false; // Variable to track the connection status
 
 
 const connectToDB = async () => {
-  dotenv.config();
-  mongoose.set('strictQuery', true);
+  config();
+  set('strictQuery', true);
 
   if (!process.env.MONGODB_URI) {
     console.log('MONGODB_URI is not defined');
@@ -20,7 +20,7 @@ const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -33,4 +33,4 @@ const connectToDB = async () => {
   }
 };
 
-module.exports = connectToDB;
+export default connectToDB;

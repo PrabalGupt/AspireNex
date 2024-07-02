@@ -1,17 +1,17 @@
 // server/routes/cronRoutes.js
-const express = require('express');
-const router = express.Router();
-const { getLowestPrice, getHighestPrice, getAveragePrice, getEmailNotifType } = require('../utils/utils');
-const connectToDB = require('../utils/mongoose');
-const Product = require('../models/productModel');
-const scrapeAmazonProduct = require('../utils/scraper');
-const { generateEmailBody, sendEmail } = require('../utils/nodemailer');
+import { Router } from 'express';
+const router = Router();
+import { getLowestPrice, getHighestPrice, getAveragePrice, getEmailNotifType } from '../utils/utils';
+import connectToDB from '../utils/mongoose';
+import { find, findOneAndUpdate } from '../models/productModel';
+import scrapeAmazonProduct from '../utils/scraper';
+import { generateEmailBody, sendEmail } from '../utils/nodemailer';
 
 router.get('/cron', async (req, res) => {
   try {
     await connectToDB();
 
-    const products = await Product.find({});
+    const products = await find({});
     if (!products) throw new Error('No products found');
 
     const updatedProducts = await Promise.all(
@@ -35,7 +35,7 @@ router.get('/cron', async (req, res) => {
           averagePrice: getAveragePrice(updatedPriceHistory),
         };
 
-        const updatedProduct = await Product.findOneAndUpdate(
+        const updatedProduct = await findOneAndUpdate(
           { url: product.url },
           product
         );
@@ -67,4 +67,4 @@ router.get('/cron', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

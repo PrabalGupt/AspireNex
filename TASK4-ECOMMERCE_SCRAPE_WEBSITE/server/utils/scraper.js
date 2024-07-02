@@ -1,6 +1,6 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const { extractCurrency, extractDescription, extractPrice } = require('./utils');
+import { get } from 'axios';
+import { load } from 'cheerio';
+import { extractCurrency, extractDescription, extractPrice } from './utils';
 
 async function scrapeAmazonProduct(url) {
   if (!url) return;
@@ -23,8 +23,8 @@ async function scrapeAmazonProduct(url) {
 
   try {
     // Fetch the product page
-    const response = await axios.get(url, options);
-    const $ = cheerio.load(response.data);
+    const response = await get(url, options);
+    const $ = load(response.data);
 
     // Extract the product title
     const title = $('#productTitle').text().trim();
@@ -86,6 +86,6 @@ async function scrapeAmazonProduct(url) {
   }
 }
 
-module.exports = {
+export default {
   scrapeAmazonProduct,
 };

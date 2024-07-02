@@ -1,8 +1,8 @@
 // Import required modules
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+import express, { json, urlencoded } from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
 // Initialize Express app
 const app = express();
@@ -24,12 +24,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.json()); // Parse incoming request bodies in JSON format
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.use(json()); // Parse incoming request bodies in JSON format
+app.use(urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // Define routes
-const productRoutes = require('./routes/productRoutes');
-const cronRoutes = require('./routes/cronRoutes');
+import productRoutes from './routes/productRoutes';
+import cronRoutes from './routes/cronRoutes';
 
 // Use routes
 app.use('/api/products', productRoutes);
