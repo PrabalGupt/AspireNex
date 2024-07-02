@@ -1,0 +1,63 @@
+.email-form {
+    flex: 1 1 40%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--gray-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: var(--text-font);
+  }
+  
+  .email-form .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .email-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--title-color);
+    font-size: var(--text-size);
+    font-family: var(--title-font);
+  }
+  
+  .email-form input[type="text"],
+  .email-form input[type="email"],
+  .email-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-family: var(--text-font);
+  }
+  
+  .email-form input[type="text"]:focus,
+  .email-form input[type="email"]:focus,
+  .email-form textarea:focus {
+    outline: none;
+    border-color: var(--header-color);
+  }
+  
+  .email-form textarea {
+    height: 200px;
+    resize: vertical;
+  }
+  
+  .email-form .submit-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--header-color);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: var(--text-font);
+  }
+  
+  .email-form .submit-button:hover {
+    background-color: #0056b3;
+  }
+  

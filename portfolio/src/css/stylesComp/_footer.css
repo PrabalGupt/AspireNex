@@ -1,0 +1,46 @@
+@import '../global/_colors.css';
+@import '../global/_typhography.css';
+
+footer {
+  background-color: var(--black-shade);
+  padding: 5rem 0;
+  width: 100%;
+}
+
+footer h3 {
+  font-size: var(--text-size);
+  color: white;
+}
+
+.footerc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 550px) {
+  .footerc {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+  }
+}
+
+.footerc__socials {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.footerc__socials a {
+  font-size: 2.3rem;
+  color: white;
+}
+
+.footerc__socials a:hover {
+  transform: scale(1.2);
+  transition: all 0.2s ease-in-out;
+}
