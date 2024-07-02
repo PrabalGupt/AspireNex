@@ -9,7 +9,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ["https://aspire-nex-frontend.vercel.app"],
+  origin: ["https://aspire-nex-frontend.vercel.app/"],
   methods: ["POST", "GET"],
   credentials: true
 }));
