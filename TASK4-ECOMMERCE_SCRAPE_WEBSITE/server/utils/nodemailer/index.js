@@ -1,7 +1,6 @@
 // import { EmailContent, EmailProductInfo, NotificationType } from ('../../utils/types.js');
 import nodemailer from ('nodemailer');
-require('dotenv').config();
-
+import 'dotenv/config.js';
 const Notification = {
   WELCOME: 'WELCOME',
   CHANGE_OF_STOCK: 'CHANGE_OF_STOCK',

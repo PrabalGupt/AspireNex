@@ -2,7 +2,7 @@
 import { Router } from 'express';
 import { getLowestPrice, getHighestPrice, getAveragePrice, getEmailNotifType } from '../utils/utils.js';
 import connectToDB from '../utils/mongoose.js';
-import { find, findOneAndUpdate } from '../models/productModel.js';
+import Product from '../models/productModel.js';
 import scrapeAmazonProduct from '../utils/scraper.js';
 import { generateEmailBody, sendEmail } from '../utils/nodemailer/index.js';
 
@@ -11,7 +11,7 @@ router.get('/cron', async (req, res) => {
   try {
     await connectToDB();
 
-    const products = await find({});
+    const products = await Product.find({});
     if (!products) throw new Error('No products found');
 
     const updatedProducts = await Promise.all(
@@ -35,7 +35,7 @@ router.get('/cron', async (req, res) => {
           averagePrice: getAveragePrice(updatedPriceHistory),
         };
 
-        const updatedProduct = await findOneAndUpdate(
+        const updatedProduct = await Product.findOneAndUpdate(
           { url: product.url },
           product
         );
