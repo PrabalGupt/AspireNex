@@ -62,9 +62,11 @@ const getProductById = async (productId) => {
 };
 
 const getAllProducts = async () => {
+  
   try {
-    const products = await Product.find();
-    return products;
+    // const products = await Product.find();
+    // return products;
+    return {"successful": "true"}
   } catch (error) {
     console.log("Error in fetching products", error);
   }
