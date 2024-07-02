@@ -1,4 +1,4 @@
-import { get } from 'axios';
+const axios = require('axios')
 import { load } from 'cheerio';
 import { extractCurrency, extractDescription, extractPrice } from './utils';
 
@@ -23,7 +23,7 @@ async function scrapeAmazonProduct(url) {
 
   try {
     // Fetch the product page
-    const response = await get(url, options);
+    const response = await axios.get(url, options);
     const $ = load(response.data);
 
     // Extract the product title
